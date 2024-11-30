@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>User Profile</h1>
+
+        <div class="profile-info">
+            <h2>Current Information</h2>
+            <ul>
+                <li><strong>Прибыль:</strong> {{ current_user.financial_data.profit or 'Не указано' }}</li>
+                <li><strong>Расходы:</strong> {{ current_user.financial_data.expenses or 'Не указано' }}</li>
+                <li><strong>Инвестиции:</strong> {{ current_user.financial_data.investments or 'Не указано' }}</li>
+                <li><strong>Количество новых клиентов:</strong> {{ current_user.financial_data.new_clients or 'Не указано' }}</li>
+                <li><strong>Средний доход с клиента:</strong> {{ current_user.financial_data.avg_income_per_client or 'Не указано' }}</li>
+                <li><strong>Среднее время взаимоотношений с клиентом:</strong> {{ current_user.financial_data.avg_client_lifetime or 'Не указано' }}</li>
+                <li><strong>Количество заказов:</strong> {{ current_user.financial_data.orders or 'Не указано' }}</li>
+                <li><strong>Начальные инвестиции:</strong> {{ current_user.financial_data.initial_investments or 'Не указано' }}</li>
+                <li><strong>Ежегодный чистый доход:</strong> {{ current_user.financial_data.annual_net_income or 'Не указано' }}</li>
+            </ul>
+        </div>
+
+        <div class="edit-profile-form">
+            <h2>Edit Information</h2>
+            <form method="POST" action="#">
+                {{ form.hidden_tag() }}
+
+                <div class="form-group">
+                    <label for="profit">Прибыль</label>
+                    {{ form.profit(class="form-control", id="profit") }}
+                </div>
+
+                <div class="form-group">
+                    <label for="expenses">Расходы</label>
+                    {{ form.expenses(class="form-control", id="payout") }}
+                </div>
+
+                <div class="form-group">
+                    <label for="investments">Инвестиции</label>
+                    {{ form.investments(class="form-control", id="investments") }}
+                </div>
+
+                <div class="form-group">
+                    <label for="new_clients">Количество новых клиентов</label>
+                    {{ form.new_clients(class="form-control", id="new_clients") }}
+                </div>
+
+                <div class="form-group">
+                    <label for="avg_income_per_client">Средний доход с клиента</label>
+                    {{ form.avg_income_per_client(class="form-control", id="avg_income_per_client") }}
+                </div>
+
+                <div class="form-group">
+                    <label for="avg_client_lifetime">Среднее время взаимоотношений с клиентом</label>
+                    {{ form.avg_client_lifetime(class="form-control", id="avg_client_lifetime") }}
+                </div>
+
+                <div class="form-group">
+                    <label for="orders">Количество заказов</label>
+                    {{ form.orders(class="form-control", id="orders") }}
+                </div>
+
+                <div class="form-group">
+                    <label for="initial_investments">Начальные инвестиции</label>
+                    {{ form.initial_investments(class="form-control", id="initial_investments") }}
+                </div>
+
+                <div class="form-group">
+                    <label for="annual_net_income">Ежегодный чистый доход</label>
+                    {{ form.annual_net_income(class="form-control", id="annual_net_income") }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

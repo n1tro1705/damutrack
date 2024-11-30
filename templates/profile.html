@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет</title>
+  <link rel="stylesheet" href="/static/css/styl.css">
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Боковая панель -->
+    <aside class="sidebar">
+      <div class="logo">
+        <a href="{{ url_for('home') }}"><img src="/static/images/logo.png" alt="Logo"></a>
+      </div>
+      <nav>
+        <ul>
+          <a href="#" class="menu-item" id="applications">
+            Заявки
+            <span class="badge">1</span>
+          </a>
+          </li>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+        </ul>
+      </nav>
+
+      <!-- Всплывающее окно -->
+      <div id="popup-window" class="popup hidden">
+        <p>MOSTVentures одобрил вашу заявку на рассмотрение</p>
+      </div>
+    </ul>
+    </nav>
+    </aside>
+
+    <!-- Основной контент -->
+    <main class="main-content">
+      <header>
+        <div class="header-left">
+          <h1>Hello, {{ current_user.username }}!</h1>
+          <p>Здесь вы можете просмотреть статистику за определеный период.</p>
+        </div>
+        <div class="header-right">
+          <span>Ваш статус: <strong>Демо</strong></span>
+        </div>
+      </header>
+
+      <section class="stats-overview">
+        <div class="cards-container">
+          <div class="card">
+            <h3>Прибыль</h3>
+            <div class="number-with-input">
+              {{ form.profit(class="form-control", id="profit") }} ₸
+              <span class="up">▲</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Выплаты</h3>
+            <div class="number-with-input">
+              {{ form.expenses(class="form-control", id="payout") }} ₸
+              <span class="up">▲</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Маркетинговые инструменты</h3>
+            <div class="number-with-input">
+              {{ form.new_clients(class="form-control", id="referral") }} ₸
+              <span class="down">▼</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Инвестиционная аналитика</h3>
+            <div class="number-with-input">
+              {{ form.investments(class="form-control", id="conversion") }} ₸
+              <span class="up">▲</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Кнопка для сохранения данных -->
+        <button id="saveData" type="submit" class="save_button">Сохранить</button>
+
+      </section>
+
+      <section class="graph-section">
+        <div class="chart">
+          <h2>Еженедельная статистика</h2>
+          <canvas id="earningsChart"></canvas>
+        </div>
+      </section>
+
+      <section class="balance-section">
+        <h2>Баланс</h2>
+        <p>$10,000</p>
+        <button>Withdraw Money</button>
+      </section>
+    </main>
+  </div>
+
+  <!-- Подключение библиотеки Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/static/js/scrip.js"></script>
+</body>
+</html>

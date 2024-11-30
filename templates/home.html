@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Home</title>
+	<link rel='stylesheet' href='https://rawcdn.githack.com/SochavaAG/example-mycode/master/_common/css/reset.css'>
+	<link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+	<div class="nav-header">
+		<div class="nav-brand">
+			<img src="/static/images/logot.png" alt="Brand Logo" class="header__logo">
+		</div>
+		<i class="fa fa-bars fa-3x"></i>
+		<div class="header-links">
+			<ul>
+				<ul>
+					{% if current_user.is_authenticated %}
+					<li><a href="{{ url_for('profile') }}" class="second-link"><b>Личный кабинет</b></a></li>
+					{% else %}
+					<li><a href="relogin.html" class="fourth-link" onclick="openForm()"><b>Авторизация</b></a></li>
+					{% endif %}
+					<li><a href="#" class="third-link"><b>Связаться</b></li>
+				</ul>
+			</ul>
+			</ul>
+		</div>
+	</div>
+	<div class="nav-screen">
+		<i class="fa fa-times fa-3x"></i>
+		<div class="nav-container">
+			<div class="nav-links">
+				<ul id='myMenu'>
+					<li data-menuanchor="secondPage"><a href="#about">О нас</a></li>
+					<li data-menuanchor="thirdPage"><a href="#portfolio">Личный кабинет</a></li>
+					<li data-menuanchor="fourthPage"><a href="#contact">Связаться</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="card blue">
+			<div class="circle">
+				<h2>Отчеты</h2>
+			</div>
+			<div class="content">
+				<p>
+					ОФР (Отчет о Финансовых Результатах) и ОДДС (Отчет о Движении Денежных Средств) — это два ключевых документа финансовой отчетности, которые используются для анализа деятельности компании.</p>
+				<a href="{{ url_for('profile') }}">Read More</a>
+			</div>
+		</div>
+		<div class="card blue">
+			<div class="circle">
+				<h2>Маркетинговые инструменты и их оценка</h2>
+			</div>
+			<div class="content">
+				<p>
+				<ol>
+					<li><strong>Стоимость привлечения клиента (CAC):</strong> {{ CAC }}₸</li>
+					<li><strong>Пожизненная ценность клиента (CLV):</strong> {{ CLV }}₸</li>
+					<li><strong>Возврат на инвестиции (ROI):</strong> {{ ROI }}%</li>
+					<li><strong>Средний чек (AOV):</strong> {{ AOV }}₸</li>
+					<li><strong>Период окупаемости (Payback Period):</strong> {{ payback_period }} month</li>
+				</ol>
+				</p>
+				<a href="{{ url_for('profile') }}">Read More</a>
+			</div>
+		</div>
+		<div class="card blue">
+			<div class="circle">
+				<h2>Посещение профиля бизнеса</h2>
+			</div>
+			<div class="content">
+				<p>В октябре 2024 года на сайт компании было зарегистрировано 25,000 посещений. Из них 18,000 уникальных пользователей посещали сайт, что свидетельствует о хорошем уровне привлечения новых клиентов.</p>
+				<a href="{{ url_for('profile') }}">Read More</a>
+			</div>
+		</div>
+
+		<!-- Вторая группа карт -->
+		<div class="card red">
+			<div class="circle">
+				<h2>Инвестиционная аналитика</h2>
+			</div>
+			<div class="content">
+				<p>Процесс анализа финансовой информации, данных рынков и других показателей для оценки эффективности инвестиций, прогнозирования доходности и принятия инвестиционных решений.</p>
+				<a href="{{ url_for('profile') }}">Read More</a>
+			</div>
+		</div>
+		<div class="card red">
+			<div class="circle">
+				<h2>Персонализованные советы</h2>
+				<p class="pro-version"><b>PRO версия</b></p>
+			</div>
+			<div class="content">
+				{% if CAC < 50 %}
+				<p>Низкий САС: Отлично, продолжайте работать над улучшением каналов, расширяйте таргетинг.</p>
+				{% else %}
+				<p>Высокий САС: Пересмотрите маркетинговую стратегию, улучшайте таргетинг и креативы, либо оптимизируйте каналы привлечения.</p>
+				{% endif %}
+				{% if CLV < 100 %}
+				<p>Низкий CLV: Работайте над программами лояльности и удержания, улучшайте послепродажное обслуживание.</p>
+				{% else %}
+				<p>Высокий CLV: Отлично, возможно, стоит масштабировать программы лояльности и расширять продуктовую линейку для существующих клиентов.</p>
+				{% endif %}
+				<a href="{{ url_for('profile') }}">Read More</a>
+			</div>
+		</div>
+		<div class="card red">
+			<div class="circle">
+				<h2>Новости</h2>
+			</div>
+			<div class="content">
+				<span><b>{{ news.topic.text }}</b></span>
+				<h3><a href="#">{{ news.title.text }}</a></h3>
+				<a href="https://vc.ru/">Read More</a>
+			</div>
+		</div>
+	</div>
+</body>

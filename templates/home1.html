@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <header class="header">
+        <h2>Welcome, {{ current_user.username }}!</h2>
+        <a href="{{ url_for('profile') }}" class="btn">Profile</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </header>
+    <main class="main">
+        <div class="marketing-tools">
+            <h2>Маркетинговые инструменты и их оценки</h2>
+            <ol>
+                <li><strong>Стоимость привлечения клиента (CAC):</strong> {{ CAC }}</li>
+                <li><strong>Пожизненная ценность клиента (CLV):</strong> {{ CLV }}</li>
+                <li><strong>Возврат на инвестиции (ROI):</strong> {{ ROI }}</li>
+                <li><strong>Средний чек (AOV):</strong> {{ AOV }}</li>
+                <li><strong>Период окупаемости (Payback Period):</strong> {{ payback_period }}</li>
+                <li><strong>Стоимость привлечения клиента (CAC):</strong> {{ CPA }}</li>
+            </ol>
+        </div>
+        <div class="investing-analitycs">
+            <h2>Инвестиционная аналитика</h2>
+            <ol>
+                <li><strong>Корреляция</strong></li>
+                <li><strong>Дисперсия множества</strong></li>
+                <li><strong>Дисперсия выборки</strong></li>
+
+            </ol>
+        </div>
+        <div class="news">
+            <h2>Новости</h2>
+                
+        </div>
+    </main>
+</body>
+</html>
